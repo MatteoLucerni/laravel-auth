@@ -13,9 +13,7 @@
             @endif
         </div>
         <div class="card-body d-flex">
-            <img style="width: 300px"
-                src="https://i0.wp.com/www.giacomocusano.com/wp-content/uploads/2016/07/coastal-wash-web.jpg?resize=1024%2C675&ssl=1"
-                alt="{{ $project->title }}">
+            <img src="{{ $project->image }}" alt="{{ $project->title }}">
             <div class="ms-5">
                 <p>
                     {{ $project->description }}
@@ -39,9 +37,12 @@
                 <a href="#" class="btn btn-danger">Delete project</a>
             </div>
             <div class="text-end">
-                Creazione: {{ $project->created_at }} <br>
-                Ultima Modifica: {{ $project->updated_at }}
+                <strong>Creazione:</strong> {{ $project->created_at }} <br>
+                <strong>Ultima Modifica:</strong> {{ $project->updated_at }}
             </div>
         </div>
     </div>
+    <footer class="text-center">
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary mx-2 mt-5">Go back to the projects list</a>
+    </footer>
 @endsection
