@@ -16,7 +16,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                    {{-- Active link if is on home --}}
+                    <a class="nav-link @if (request()->routeIs('home')) active @endif"
+                        href="{{ url('/') }}">{{ __('Home') }}</a>
                 </li>
             </ul>
 
