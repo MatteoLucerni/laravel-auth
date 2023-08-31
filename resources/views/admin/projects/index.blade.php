@@ -26,10 +26,9 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between mt-3 align-items-center border-0 bg-light">
                         <div class="buttons">
-                            <a href="#" class="btn btn-success">Click</a>
-                            <a href="#" class="btn btn-success">Click</a>
-                            <a href="#" class="btn btn-success">Click</a>
-                            <a href="#" class="btn btn-success">Click</a>
+                            <a href="#" class="btn btn-primary">More details</a>
+                            <a href="#" class="btn btn-warning mx-2">Edit Project</a>
+                            <a href="#" class="btn btn-danger">Delete Project</a>
                         </div>
                         <div class="text-end">
                             Creazione: {{ $proj->created_at }} <br>
