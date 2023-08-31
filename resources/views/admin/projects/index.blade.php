@@ -13,11 +13,11 @@
                         <h2 class="m-0">
                             {{ $proj->title }}
                         </h2>
-                        <?php if($proj->is_public) : ?>
-                        <div class="alert alert-success m-0">
-                            Open-source
-                        </div>
-                        <?php endif ?>
+                        @if ($proj->is_public)
+                            <div class="alert alert-success m-0">
+                                Open-source
+                            </div>
+                        @endif
                     </div>
                     <div class="card-body d-flex">
                         <img src="{{ $proj->image }}" alt="{{ $proj->title }}">
