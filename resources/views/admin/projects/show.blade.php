@@ -12,21 +12,28 @@
                 </div>
             @endif
         </div>
-        <div class="card-body d-flex">
-            <img src="{{ $project->image }}" alt="{{ $project->title }}">
-            <div class="ms-5">
+        <div class="card-body row justify-content-between ">
+            <div class="col-4 mt-3">
+                <img class="col-4 w-100"
+                    src="https://i0.wp.com/www.giacomocusano.com/wp-content/uploads/2016/07/coastal-wash-web.jpg?resize=1024%2C675&ssl=1"
+                    alt="{{ $project->title }}">
+            </div>
+            <div class="col-8 ps-5">
                 <p>
                     {{ $project->description }}
                 </p>
                 <ul>
                     <li>
-                        Main Language: {{ $project->main_lang }}
+                        <strong>Repository name:</strong> {{ $project->slug }}
                     </li>
                     <li>
-                        Other Languages: {{ $project->other_langs }}
+                        <strong>Main Language:</strong> {{ $project->main_lang }}
                     </li>
                     <li>
-                        Stars: {{ $project->n_stars }} <i class="fas fa-star"></i>
+                        <strong>Other Languages:</strong> {{ $project->other_langs }}
+                    </li>
+                    <li>
+                        <strong>Stars:</strong> {{ $project->n_stars }} <i class="fas fa-star"></i>
                     </li>
                 </ul>
             </div>
