@@ -6,14 +6,14 @@
 @section('content')
     <h1 class="text-center mt-5">Discover My Projects</h1>
     <ul class="list-unstyled">
-        @forelse ($projects as $proj)
+        @forelse ($projects as $project)
             <li class="my-5">
                 <div class="card bg-light p-5">
                     <div class="card-header rounded border-0 mb-4 d-flex justify-content-between align-content-center ">
                         <h2 class="m-0 d-flex align-items-center">
-                            {{ $proj->title }}
+                            {{ $project->title }}
                         </h2>
-                        @if ($proj->is_public)
+                        @if ($project->is_public)
                             <div class="alert alert-success m-0">
                                 Open-source
                             </div>
@@ -21,18 +21,29 @@
                     </div>
                     <div class="card-body">
                         <p class="">
-                            {{ $proj->description }}
+                            {{ $project->description }}
                         </p>
                     </div>
                     <div class="card-footer d-flex justify-content-between mt-3 align-items-center border-0 bg-light">
-                        <div class="buttons">
-                            <a href="#" class="btn btn-primary">More details</a>
-                            <a href="#" class="btn btn-warning mx-2">Edit Project</a>
-                            <a href="#" class="btn btn-danger">Delete Project</a>
+                        <div class="buttons d-flex">
+                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary">
+                                <i class="fas fa-eye me-2"></i>More details
+                            </a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning mx-2">
+                                <i class="fas fa-pen me-2"></i>Edit
+                                project
+                            </a>
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-trash me-2"></i>Delete project
+                                </button>
+                            </form>
                         </div>
                         <div class="text-end">
-                            Creazione: {{ $proj->created_at }} <br>
-                            Ultima Modifica: {{ $proj->updated_at }}
+                            Creazione: {{ $project->created_at }} <br>
+                            Ultima Modifica: {{ $project->updated_at }}
                         </div>
                     </div>
                 </div>
