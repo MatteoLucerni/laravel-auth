@@ -24,7 +24,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
 
     // routes for Projects
-    Route::resource('projects', ProjectController::class);
+    Route::resource('/projects', ProjectController::class);
 });
 
 Route::middleware('auth')->group(function () {
