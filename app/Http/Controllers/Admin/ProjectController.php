@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('updated_at', 'DESC');
+        $projects = Project::orderBy('updated_at', 'DESC')->get();
         return view('admin.projects.index', compact('projects'));
     }
 
