@@ -8,7 +8,7 @@
     <ul class="list-unstyled">
         @forelse ($projects as $proj)
             <li class="my-5">
-                <div class="card p-5">
+                <div class="card bg-light p-5">
                     <div class="card-header rounded border-0 mb-4 d-flex justify-content-between align-content-center ">
                         <h2 class="m-0">
                             {{ $proj->title }}
@@ -41,7 +41,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="card-footer border-0 bg-white text-end ">
+                    <div class="card-footer border-0 bg-light text-end ">
                         Creazione: {{ $proj->created_at }} <br>
                         Ultima Modifica: {{ $proj->updated_at }}
                     </div>
