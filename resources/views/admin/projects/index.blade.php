@@ -33,7 +33,8 @@
                                 <i class="fas fa-pen me-2"></i>Edit
                                 project
                             </a>
-                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                            <form class="delete-form" action="{{ route('admin.projects.destroy', $project) }}"
+                                method="POST" data-name="{{ $project->title }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">
@@ -52,4 +53,8 @@
             <h4 class="alert alert-danger mt-5 text-center">Non ci sono progetti disponibili</h4>
         @endforelse
     </ul>
+@endsection
+
+@section('scripts')
+    @vite('resources/js/delete-confirm.js');
 @endsection
