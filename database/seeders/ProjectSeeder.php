@@ -17,10 +17,10 @@ class ProjectSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             $proj = new Project();
-            $proj->title = $faker->text(20);
+            $proj->title = $faker->text(35);
             $proj->slug = Str::slug($proj->title, '-');
             $proj->image = $faker->imageUrl(250, 250);
-            $proj->description = $faker->paragraph(10, true);
+            $proj->description = $faker->paragraph(30, true);
             $proj->main_lang = $faker->word();
             $proj->other_langs = $faker->words(3, true);
             $proj->n_stars = $faker->randomDigit();
