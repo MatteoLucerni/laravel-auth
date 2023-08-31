@@ -11,5 +11,5 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'slug', 'image', 'description', 'main_lang', 'other_langs', 'n_stars', 'is_public',];
+    protected $fillable = ['title', 'slug', 'image', 'description', 'main_lang', 'other_langs', 'n_stars', 'is_public'];
 }
