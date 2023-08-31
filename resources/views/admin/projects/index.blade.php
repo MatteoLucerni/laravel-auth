@@ -19,24 +19,10 @@
                             </div>
                         @endif
                     </div>
-                    <div class="card-body d-flex">
-                        <img src="{{ $proj->image }}" alt="{{ $proj->title }}">
-                        <div class="flex-end ms-5">
-                            <p class="">
-                                {{ $proj->description }}
-                            </p>
-                            <ul>
-                                <li>
-                                    Main Language: {{ $proj->main_lang }}
-                                </li>
-                                <li>
-                                    Other Languages: {{ $proj->other_langs }}
-                                </li>
-                                <li>
-                                    Stars: {{ $proj->n_stars }}
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="card-body">
+                        <p class="">
+                            {{ $proj->description }}
+                        </p>
                     </div>
                     <div class="card-footer d-flex justify-content-between mt-3 align-items-center border-0 bg-light">
                         <div class="buttons">
