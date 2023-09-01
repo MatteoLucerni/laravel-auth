@@ -4,11 +4,15 @@
 
 
 @section('content')
-    <h1 class="text-center mt-5">List of Projects</h1>
+    <h1 class="text-center mt-5">Projects trash</h1>
     <div class="d-flex justify-content-end mt-5">
-        <a class="d-inline-block btn btn-secondary me-2" href="{{ route('admin.projects.trash') }}">Open trash</a>
-        <a class="d-inline-block btn btn-success" href="{{ route('admin.projects.create') }}">Create a new
-            project</a>
+        <form class="delete-form" action="{{ route('admin.projects.dropAll') }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger">
+                <i class="fas fa-trash me-2"></i>Delete all
+            </button>
+        </form>
     </div>
     <ul class="list-unstyled">
         @forelse ($projects as $project)
@@ -31,15 +35,16 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between mt-3 align-items-center border-0 bg-light">
                         <div class="buttons d-flex">
-                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary">
-                                <i class="fas fa-eye me-2"></i>More details
-                            </a>
-                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning mx-2">
-                                <i class="fas fa-pen me-2"></i>Edit
-                                project
-                            </a>
-                            <form class="delete-form" action="{{ route('admin.projects.destroy', $project) }}"
-                                method="POST" data-name="{{ $project->title }}">
+                            <form class="me-2" action="{{ route('admin.projects.restore', $project) }}" method="POST"
+                                data-name="{{ $project->title }}">
+                                @csrf
+                                @method('PATCH')
+                                <button class="btn btn-success">
+                                    <i class="fas fa-arrow-rotate-left me-2"></i>Restore project
+                                </button>
+                            </form>
+                            <form class="delete-form" action="{{ route('admin.projects.drop', $project) }}" method="POST"
+                                data-name="{{ $project->title }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">
@@ -48,19 +53,17 @@
                             </form>
                         </div>
                         <div class="text-end">
-                            Creazione: {{ $project->created_at }} <br>
-                            Ultima Modifica: {{ $project->updated_at }}
+                            Created: {{ $project->created_at }} <br>
+                            Last edit: {{ $project->updated_at }} <br>
+                            Deleted: {{ $project->deleted_at }}
                         </div>
                     </div>
                 </div>
             </li>
         @empty
-            <h4 class="alert alert-danger mt-5 text-center">Non ci sono progetti disponibili</h4>
+            <h4 class="alert alert-danger mt-5 text-center">Trash is empty</h4>
         @endforelse
     </ul>
-    @if ($projects->hasPages())
-        {{ $projects->links() }}
-    @endif
 @endsection
 
 @section('scripts')

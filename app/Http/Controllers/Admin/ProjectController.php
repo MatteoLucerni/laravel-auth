@@ -78,12 +78,34 @@ class ProjectController extends Controller
         return to_route('admin.projects.index')->with('alert-message', 'Project deleted successfully')->with('alert-type', 'success');
     }
 
+    // trash
+
+    public function trash()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.projects.trash', compact('projects'));
+    }
+
+    public function dropAll()
+    {
+        Project::onlyTrashed()->forceDelete();
+        return to_route('admin.projects.trash');
+    }
+
+    public function drop(string $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->forceDelete();
+        return to_route('admin.projects.trash');
+    }
+
+
     public function restore(string $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
 
         $project->restore();
 
-        return to_route('admin.posts.index')->with('alert-message', 'Project restored successfully')->with('alert-type', 'success');
+        return to_route('admin.projects.trash')->with('alert-message', 'Project restored successfully')->with('alert-type', 'success');
     }
 }

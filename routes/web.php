@@ -20,8 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [GuestHomeController::class, 'index'])->name('guest.home');
 
 // routes for Admin
-Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+
+    Route::get('/projects/trash', [ProjectController::class, 'trash'])->name('projects.trash');
+    Route::delete('/projects/trash/{team}/drop', [ProjectController::class, 'drop'])->name('projects.drop');
+    Route::delete('/projects/trash/drop', [ProjectController::class, 'dropAll'])->name('projects.dropAll');
+    Route::patch('/projects/{team}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
 
     // routes for Projects
     Route::resource('/projects', ProjectController::class);
