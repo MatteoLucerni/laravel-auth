@@ -63,7 +63,7 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
         $project->update($data);
 
-        return to_route('admin.projects.show', $project);
+        return to_route('admin.projects.show', $project)->with('alert-message', 'Project edited successfully')->with('alert-type', 'success');
     }
 
     /**
@@ -72,6 +72,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('alert-message', 'Project deleted successfully')->with('alert-type', 'success');
     }
 }
