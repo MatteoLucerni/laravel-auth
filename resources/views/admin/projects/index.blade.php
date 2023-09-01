@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <h1 class="text-center mt-5">Discover My Projects</h1>
+    <h1 class="text-center mt-5">List of Projects</h1>
     <div class="d-flex justify-content-end mt-5">
         <a class="d-inline-block btn btn-success" href="{{ route('admin.projects.create') }}">Create a new
             project</a>

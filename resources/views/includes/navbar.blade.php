@@ -24,6 +24,11 @@
                         <a class="nav-link @if (request()->routeIs('admin.projects*')) active @endif"
                             href="{{ route('admin.projects.index') }}">Projects</a>
                     </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link @if (request()->routeIs('guest.home')) active @endif"
+                            href="{{ route('guest.home') }}">Projects</a>
+                    </li>
                 @endauth
             </ul>
 
