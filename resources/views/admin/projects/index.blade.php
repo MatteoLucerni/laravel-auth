@@ -4,7 +4,9 @@
 
 
 @section('content')
+
     <h1 class="text-center mt-5">List of Projects</h1>
+    @include('includes.alert')
     <div class="d-flex justify-content-end mt-5">
         <a class="d-inline-block btn btn-secondary me-2" href="{{ route('admin.projects.trash') }}">Open trash</a>
         <a class="d-inline-block btn btn-success" href="{{ route('admin.projects.create') }}">Create a new
