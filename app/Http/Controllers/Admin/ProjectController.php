@@ -56,7 +56,7 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title, '-');
         $project->save();
 
-        return to_route('admin.projects.show', $project);
+        return to_route('admin.projects.show', $project)->with('alert-message', "Project '$project->title' created successfully")->with('alert-type', 'success');
     }
 
     /**
@@ -84,7 +84,7 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
         $project->update($data);
 
-        return to_route('admin.projects.show', $project)->with('alert-message', 'Project edited successfully')->with('alert-type', 'success');
+        return to_route('admin.projects.show', $project)->with('alert-message', "Project '$project->title' edited successfully")->with('alert-type', 'success');
     }
 
     /**
@@ -107,14 +107,14 @@ class ProjectController extends Controller
     public function dropAll()
     {
         Project::onlyTrashed()->forceDelete();
-        return to_route('admin.projects.trash');
+        return to_route('admin.projects.trash')->with('alert-message', "All projects in the trash deleted successfully")->with('alert-type', 'success');
     }
 
     public function drop(string $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->forceDelete();
-        return to_route('admin.projects.trash');
+        return to_route('admin.projects.trash')->with('alert-message', "Project '$project->title' deleted successfully")->with('alert-type', 'success');
     }
 
 
@@ -124,6 +124,6 @@ class ProjectController extends Controller
 
         $project->restore();
 
-        return to_route('admin.projects.trash')->with('alert-message', 'Project restored successfully')->with('alert-type', 'success');
+        return to_route('admin.projects.trash')->with('alert-message', "Project '$project->title' restored successfully")->with('alert-type', 'success');
     }
 }

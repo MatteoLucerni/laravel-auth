@@ -5,6 +5,7 @@
 
 @section('content')
     <h1 class="text-center mt-5">Projects trash</h1>
+    @include('includes.alert')
     <div class="d-flex justify-content-end mt-5">
         <form class="delete-form" action="{{ route('admin.projects.dropAll') }}" method="POST">
             @csrf
