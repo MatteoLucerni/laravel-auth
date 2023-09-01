@@ -34,7 +34,10 @@
                                 <strong>Other Languages:</strong> {{ $project->other_langs }}
                             </li>
                             <li>
-                                <strong>Stars:</strong> {{ $project->n_stars }} <i class="fas fa-star"></i>
+                                <strong>Stars:</strong>
+                                @for ($i = 0; $i < $project->n_stars; $i++)
+                                    <i class="fas fa-star"></i>
+                                @endfor
                             </li>
                         </ul>
                     </div>
