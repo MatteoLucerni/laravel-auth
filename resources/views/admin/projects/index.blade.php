@@ -57,6 +57,9 @@
             <h4 class="alert alert-danger mt-5 text-center">Non ci sono progetti disponibili</h4>
         @endforelse
     </ul>
+    @if ($projects->hasPages())
+        {{ $projects->links() }}
+    @endif
 @endsection
 
 @section('scripts')
