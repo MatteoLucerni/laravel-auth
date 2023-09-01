@@ -15,7 +15,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $proj = new Project();
             $proj->title = $faker->text(35);
             $proj->slug = Str::slug($proj->title, '-');
