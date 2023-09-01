@@ -36,7 +36,7 @@
         </main>
     </div>
 
-    @include('includes.toasts')
+    {{-- @include('includes.toasts') --}}
 
     @yield('scripts')
 </body>
