@@ -25,6 +25,12 @@
     @vite(['resources/js/app.js'])
 </head>
 
+<style>
+    body {
+        display: none
+    }
+</style>
+
 <body>
     <div id="app">
 
