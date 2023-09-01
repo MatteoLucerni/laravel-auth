@@ -64,6 +64,9 @@
             <h4 class="alert alert-danger mt-5 text-center">Trash is empty</h4>
         @endforelse
     </ul>
+    <footer class="text-center mb-5">
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary mx-2 mt-5">Go back to the projects list</a>
+    </footer>
 @endsection
 
 @section('scripts')
