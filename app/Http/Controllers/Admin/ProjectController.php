@@ -130,6 +130,9 @@ class ProjectController extends Controller
     public function drop(string $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
+        if (!$project) return to_route('admin.projects.index')->with('alert-message', "Project not found")->with('alert-type', 'danger');
+
+
         $project->forceDelete();
         return to_route('admin.projects.trash')->with('alert-message', "Project '$project->title' deleted successfully")->with('alert-type', 'success');
     }
