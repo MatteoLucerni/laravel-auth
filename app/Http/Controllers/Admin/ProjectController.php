@@ -60,8 +60,8 @@ class ProjectController extends Controller
             $data['image'] = $img_url;
         }
 
-        $project->fill($data);
         $project->slug = Str::slug($project->title, '-');
+        $project->fill($data);
         $project->save();
 
         return to_route('admin.projects.show', $project)->with('alert-message', "Project '$project->title' created successfully")->with('alert-type', 'success');
@@ -90,6 +90,15 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($data['title'], '-');
+
+
+        if (array_key_exists('image', $data)) {
+            if ($project->image) Storage::delete($project->image);
+            $ext = $data['image']->extension();
+            $img_url = Storage::putFileAs('project_images', $data['image'], "{$data['slug']}.$ext");
+            $data['image'] = $img_url;
+        }
+
         $project->update($data);
 
         return to_route('admin.projects.show', $project)->with('alert-message', "Project '$project->title' edited successfully")->with('alert-type', 'success');
