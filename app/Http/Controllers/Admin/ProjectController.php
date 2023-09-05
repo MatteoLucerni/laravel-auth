@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -35,7 +36,7 @@ class ProjectController extends Controller
         $request->validate(
             [
                 'title' => 'required|string|unique:projects',
-                'image' => 'string|nullable|url',
+                // 'image' => 'string|nullable|url',
                 'description' => 'string|nullable',
                 'main_lang' => 'string|nullable',
                 'other_langs' => 'string|nullable',
@@ -46,12 +47,19 @@ class ProjectController extends Controller
                 'title.required' => 'The title of the project is required',
                 'title.unique' => 'The title alredy exists, must be unique',
                 'n_stars.numeric' => 'You must insert a positive number',
-                'image.url' => 'The url is not valid',
+                // 'image.url' => 'The url is not valid',
             ]
         );
 
         $data = $request->all();
         $project = new Project($data);
+
+        if (array_key_exists('image', $data)) {
+            $ext = $data['image']->extension();
+            $img_url = Storage::putFileAs('project_images', $data['image'], "{$data['slug']}.$ext");
+            $data['image'] = $img_url;
+        }
+
         $project->fill($data);
         $project->slug = Str::slug($project->title, '-');
         $project->save();
