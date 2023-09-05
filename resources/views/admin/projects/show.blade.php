@@ -17,9 +17,7 @@
         </div>
         <div class="card-body row justify-content-between ">
             <div class="col-4 mt-3">
-                <img class="col-4 w-100"
-                    src="https://i0.wp.com/www.giacomocusano.com/wp-content/uploads/2016/07/coastal-wash-web.jpg?resize=1024%2C675&ssl=1"
-                    alt="{{ $project->title }}">
+                <img class="col-4 w-100" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
             </div>
             <div class="col-8 ps-5">
                 <p>
