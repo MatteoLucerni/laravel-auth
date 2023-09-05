@@ -36,7 +36,7 @@ class ProjectController extends Controller
         $request->validate(
             [
                 'title' => 'required|string|unique:projects',
-                // 'image' => 'string|nullable|url',
+                'image' => 'image:jpg,jpeg,png|nullable',
                 'description' => 'string|nullable',
                 'main_lang' => 'string|nullable',
                 'other_langs' => 'string|nullable',
@@ -47,7 +47,7 @@ class ProjectController extends Controller
                 'title.required' => 'The title of the project is required',
                 'title.unique' => 'The title alredy exists, must be unique',
                 'n_stars.numeric' => 'You must insert a positive number',
-                // 'image.url' => 'The url is not valid',
+                'image.url' => 'The file is not valid',
             ]
         );
 
